@@ -1,7 +1,7 @@
 # PHP Project Installer: CLI & Browser Support
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)  <!-- Add your license file -->
-
+Please leave a star ⭐ 😅!
 This project provides a streamlined and flexible installation system for PHP projects.  It uniquely supports both **Command Line Interface (CLI)** and **Browser-based** installation using the *same underlying code*, eliminating code duplication and simplifying maintenance.  It's designed for rapid development and easy integration into new or existing PHP projects.
 
 ### Browser
