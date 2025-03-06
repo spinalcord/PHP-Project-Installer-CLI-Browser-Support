@@ -28,6 +28,8 @@ This project provides a streamlined and flexible installation system for PHP pro
 *   **Built-in Navigation Handling:**
     *   `nextTriggered()`, `backTriggered()`, and `resetTriggered()` methods provide control over navigation and allow for validation and data processing.
 *   **Event Broadcasting (Reset):** The `resetTriggered()` method broadcasts an event to all controllers, enabling actions like database table removal.
+*   **Stored Values:** Values are Stored in the session, so they can restored easiely if you navigate through the pages.
+*   **CSRF:** CSRF token prevents unauthorized actions by ensuring that only legitimate requests from authenticated users are accepted.
 *   **PHP 7.x and 8.x support**: Supports php 7.x and 8.x for more flexibility.
 
 ## Installation & Setup
