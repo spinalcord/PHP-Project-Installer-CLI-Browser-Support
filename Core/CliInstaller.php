@@ -162,7 +162,24 @@ class CliInstaller
                     $input = trim(fgets(STDIN));
                     $data[$key] = empty($input) ? $default : $input;
                     break;
+                case 'password':
+                    $default = $field['value'] ?? '';
+                    echo $field['label'] . " [" . ($default ? str_repeat("*", strlen($default)) : "") . "]: "; // Show asterisks for default
 
+                    // Hide input using system command (if available)
+                    if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+                        // Windows: use PowerShell
+                        $input = trim(shell_exec('powershell -Command "$password = Read-Host -AsSecureString; [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($password))"'));
+
+                    } else {
+                        // Linux/macOS/other Unix-like: use stty -echo
+                        system('stty -echo');  // Disable echo
+                        $input = trim(fgets(STDIN));
+                        system('stty echo');  // Re-enable echo
+                        echo "\n"; // Add a newline after the input (since echo was disabled)
+                    }
+                    $data[$key] = empty($input) ? $default : $input;
+                    break;
                 case 'checkbox':
                     $default = $field['value'] ? 'yes' : 'no';
                     echo $field['label'] . " (yes/no) [" . $default . "]: ";
