@@ -41,7 +41,7 @@ This project provides a streamlined and flexible installation system for PHP pro
     ```
 
 2.  **Include in Your Project:**
-Unfortunately, you cannot add this project using Composer because the installation directory must either be renamed or deleted for security reasons. Renaming a dependency in the vendor directory would likely be considered "bad practice." For this purpose, I created a custom autoloader.
+Unfortunately, you cannot add this project to Composer vendor directory because the installation directory must either be renamed or deleted for security reasons. Renaming a dependency in the vendor directory would likely be considered "bad practice." For this purpose, I created a custom autoloader. So you can use it alongside with composer.
 Here are the steps that I believe are the correct way to proceed:
 - Clone this project.
 - Place the installer in an appropriate location (such as /src or /app).
