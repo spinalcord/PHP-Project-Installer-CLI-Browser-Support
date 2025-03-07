@@ -185,12 +185,11 @@ class CliInstaller
                     echo $field['label'] . " [" . $default . "]: ";
                     $input = trim(fgets(STDIN));
     
-                    // E-Mail-Validierung
                     if (empty($input)) {
                         $data[$key] = $default;
                     } else {
                         if (!filter_var($input, FILTER_VALIDATE_EMAIL)) {
-                            throw new Exception("Ungültige E-Mail-Adresse. Bitte geben Sie eine gültige E-Mail-Adresse ein.");
+                            throw new Exception("Invalid email.");
                         }
                         $data[$key] = $input;
                     }
