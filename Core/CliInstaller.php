@@ -180,6 +180,21 @@ class CliInstaller
                     }
                     $data[$key] = empty($input) ? $default : $input;
                     break;
+                case 'email':
+                    $default = $field['value'] ?? '';
+                    echo $field['label'] . " [" . $default . "]: ";
+                    $input = trim(fgets(STDIN));
+    
+                    // E-Mail-Validierung
+                    if (empty($input)) {
+                        $data[$key] = $default;
+                    } else {
+                        if (!filter_var($input, FILTER_VALIDATE_EMAIL)) {
+                            throw new Exception("Ungültige E-Mail-Adresse. Bitte geben Sie eine gültige E-Mail-Adresse ein.");
+                        }
+                        $data[$key] = $input;
+                    }
+                    break;
                 case 'checkbox':
                     $default = $field['value'] ? 'yes' : 'no';
                     echo $field['label'] . " (yes/no) [" . $default . "]: ";
